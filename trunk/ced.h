@@ -16,6 +16,7 @@ public:
 	fltk::TextBuffer *textbuf;
 
 	ced (int w, int h, const char* t);
+	void setcontrol (fltk::Window* w);
 }; // end class ced
 
 #endif

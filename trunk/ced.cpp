@@ -1,7 +1,9 @@
 #include <fltk/Window.h>
 #include <stdlib.h>
+#include "control.h"
 #include "ced.h"
 
+static control *pcontrol; // gloabal pointer for browser window
 
 ced::ced (int w, int h, const char* t) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h, t)
 {
@@ -21,8 +23,14 @@ ced::ced (int w, int h, const char* t) : fltk::Window(fltk::USEDEFAULT, fltk::US
 	ed->wrap_mode (true, 0);
 }
 
+void ced::setcontrol (fltk::Window* w)
+{
+	pcontrol = (control*)w;
+}
+
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
+	pcontrol->browser->add ("good");
 	fltk::Window* tmp = w->window ();
 	tmp->hide ();
 }

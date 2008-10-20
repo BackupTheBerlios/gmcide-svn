@@ -40,6 +40,7 @@ void control::new_cb (fltk::Widget* w, void* data)
 	ic = tmp->wc.size ();
 	sprintf (buffer, "No Name %d", ic+1);
 	ced *cedwin = new ced (200, 200, buffer);
+	cedwin->setcontrol (tmp);
 	cedwin->show ();
 	tmp->wc.push_back (cedwin);
 	tmp->browser->add (buffer);
