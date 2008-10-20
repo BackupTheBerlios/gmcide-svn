@@ -3,7 +3,7 @@
 #include "control.h"
 #include "ced.h"
 
-static control *pcontrol; // gloabal pointer for browser window
+static control *pcontrol; // global pointer for browser window
 
 ced::ced (int w, int h, const char* t) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h, t)
 {
