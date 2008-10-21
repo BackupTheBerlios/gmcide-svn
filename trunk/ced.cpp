@@ -30,8 +30,9 @@ void ced::setcontrol (fltk::Window* w)
 
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
-	pcontrol->browser->add ("good");
+	//pcontrol->redraw_list ();
 	fltk::Window* tmp = w->window ();
+	pcontrol->delete_this (w);
 	tmp->hide ();
 }
 

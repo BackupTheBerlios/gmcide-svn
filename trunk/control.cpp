@@ -32,14 +32,28 @@ void control::quit_cb (fltk::Widget*, void* data)
 	exit (0);
 }
 
+void control::redraw_list ()
+{
+	browser->clear ();
+	for(wc_iterator=wc.begin(); wc_iterator != wc.end(); ++wc_iterator)
+		browser->add ((*wc_iterator)->label () );
+}
+
+void control::delete_this (fltk::Widget* w)
+{
+	ced* cw = (ced*) w->window ();
+	wc.remove (cw);
+	redraw_list ();
+}
+
 void control::new_cb (fltk::Widget* w, void* data)
 {
 	int static ic;
 	char static buffer[20];
-	control* tmp = (control*) w->window();
+	control* tmp = (control*) w->window ();
 	ic = tmp->wc.size ();
 	sprintf (buffer, "No Name %d", ic+1);
-	ced *cedwin = new ced (200, 200, buffer);
+	ced* cedwin = new ced (200, 200, buffer);
 	cedwin->setcontrol (tmp);
 	cedwin->show ();
 	tmp->wc.push_back (cedwin);
