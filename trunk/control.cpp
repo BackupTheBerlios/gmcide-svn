@@ -34,9 +34,19 @@ void control::quit_cb (fltk::Widget*, void* data)
 
 void control::redraw_list ()
 {
+
+	char static buffer[20];
+	int static ic;
+
 	browser->clear ();
+
 	for(wc_iterator=wc.begin(); wc_iterator != wc.end(); ++wc_iterator)
-		browser->add ((*wc_iterator)->label () );
+	{
+		ic = wc.size ();
+		sprintf (buffer, "Anzahl Datensätze %d", ic);
+		browser->add (buffer);
+		//browser->add ((*wc_iterator)->label () );
+	}
 }
 
 void control::delete_this (fltk::Widget* w)
