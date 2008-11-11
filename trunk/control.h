@@ -23,7 +23,7 @@ public:
 	fltk::MenuBar *menubar;
 	fltk::Browser *browser;
 
-	control (int w, int h, const char* t);
+	control (int w, int h, const char*);
 }; // end class control
 
 #endif

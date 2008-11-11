@@ -1,11 +1,12 @@
 #include <fltk/Window.h>
+#include <fltk/ask.h>
 #include <stdlib.h>
 #include "control.h"
 #include "ced.h"
 
 static control *pcontrol; // global pointer for browser window
 
-ced::ced (int w, int h, const char* t) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h, t)
+ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 {
 	begin (); // draw the window
 		// Here starts the menu
@@ -25,14 +26,20 @@ ced::ced (int w, int h, const char* t) : fltk::Window(fltk::USEDEFAULT, fltk::US
 
 void ced::setcontrol (fltk::Window* w)
 {
-	pcontrol = (control*)w;
+	pcontrol = (control*)w; // set the pointer to the control
 }
 
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
-	//pcontrol->redraw_list ();
 	fltk::Window* tmp = w->window ();
-	pcontrol->delete_this (w);
+	pcontrol->delete_this (w); // tell control that this window is deleted
+	tmp->hide ();
+}
+
+void ced::callback (fltk::Widget* w, void* data)
+{
+	fltk::Window* tmp = w->window ();
+	pcontrol->delete_this (w); // tell control that this window is deleted*/
 	tmp->hide ();
 }
 
