@@ -16,6 +16,7 @@ public:
 	void static new_cb (fltk::Widget*, void* data);
 	void redraw_list ();
 	void delete_this (fltk::Widget*);
+	void delete_this2 (fltk::Widget*);
 
 	std::list<ced*> wc;
 	std::list<ced*>::iterator wc_iterator;

@@ -34,25 +34,13 @@ void ced::setcontrol (fltk::Window* w)
 
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
-	char buffer[30];
-
 	fltk::Window* tmp = w->window ();
-	sprintf (buffer, "%d - %d - %d", w, tmp, pcontrol);
-	if (fltk::ask (buffer))
-	{
-		pcontrol->delete_this (w); // tell control that this window is deleted
-		tmp->hide ();
-	}
+	pcontrol->delete_this (w); // tell control that this window is deleted
+	tmp->hide ();
 }
 
 void ced::window_cb (fltk::Widget* w, void* data)
 {
-	char buffer[30];
-	fltk::Window* tmp = w->window ();
-	sprintf (buffer, "%d - %d - %d", w, tmp, pcontrol);
-	if (fltk::ask (buffer))
-	{
-		//pcontrol->delete_this ((fltk::Window*)w);
-    	((fltk::Window*)w)->hide();
-	}
+	pcontrol->delete_this2 ((fltk::Window*)w);
+    ((fltk::Window*)w)->hide();
 }

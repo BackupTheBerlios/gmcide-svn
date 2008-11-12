@@ -55,14 +55,21 @@ void control::delete_this (fltk::Widget* w)
 	redraw_list ();
 }
 
+
+void control::delete_this2 (fltk::Widget* w)
+{
+	wc.remove ((ced*)w);
+	redraw_list ();
+}
+
 void control::new_cb (fltk::Widget* w, void* data)
 {
 	int static ic;
-	char buffer[20];
+	char buffer[30];
 	control* tmp = (control*) w->window ();
 	ic = tmp->wc.size ();
-	sprintf (buffer, "No Name %d", ic+1);
 	ced* cedwin = new ced (200, 200);
+	sprintf (buffer, "No Name %d", ic+1);
 	cedwin->copy_label (buffer); // Important for own copy - else garbage displays
 	cedwin->setcontrol (tmp); // send a pointer from control to ced
 	cedwin->show ();
