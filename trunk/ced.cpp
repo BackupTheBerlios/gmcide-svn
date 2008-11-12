@@ -35,12 +35,12 @@ void ced::setcontrol (fltk::Window* w)
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
 	fltk::Window* tmp = w->window ();
-	pcontrol->delete_this (w); // tell control that this window is deleted
+	pcontrol->delete_this (tmp); // tell control that this window is deleted
 	tmp->hide ();
 }
 
 void ced::window_cb (fltk::Widget* w, void* data)
 {
-	pcontrol->delete_this2 ((fltk::Window*)w);
+	pcontrol->delete_this ((fltk::Window*)w);
     ((fltk::Window*)w)->hide();
 }
