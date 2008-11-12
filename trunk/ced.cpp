@@ -14,6 +14,8 @@ ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 		menubar = new fltk::MenuBar (0, 0, w, 30);
 
 		menubar->begin ();
+			//menubar->add("File/Exit This", 0, exitthis_cb, (void*)this);
+
 			menubar->add("File/Exit This", 0, exitthis_cb, (void*)this);
 		menubar->end (); // here ends the menu
 
@@ -32,20 +34,25 @@ void ced::setcontrol (fltk::Window* w)
 
 void ced::exitthis_cb(fltk::Widget* w, void* data)
 {
+	char buffer[30];
+
 	fltk::Window* tmp = w->window ();
-	pcontrol->delete_this (w); // tell control that this window is deleted
-	tmp->hide ();
+	sprintf (buffer, "%d - %d - %d", w, tmp, pcontrol);
+	if (fltk::ask (buffer))
+	{
+		pcontrol->delete_this (w); // tell control that this window is deleted
+		tmp->hide ();
+	}
 }
 
 void ced::window_cb (fltk::Widget* w, void* data)
 {
-	if (fltk::ask("Do you really want to exit?"))
+	char buffer[30];
+	fltk::Window* tmp = w->window ();
+	sprintf (buffer, "%d - %d - %d", w, tmp, pcontrol);
+	if (fltk::ask (buffer))
 	{
-		fltk::Window* tmp = w->window ();
-		pcontrol->delete_this (w);
-
-    	//((fltk::Window*)w)->hide();
+		//pcontrol->delete_this ((fltk::Window*)w);
+    	((fltk::Window*)w)->hide();
 	}
-
 }
-
