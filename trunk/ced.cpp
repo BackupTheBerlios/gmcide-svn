@@ -8,6 +8,7 @@ static control *pcontrol; // global pointer for browser window
 
 ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 {
+	callback (window_cb);
 	begin (); // draw the window
 		// Here starts the menu
 		menubar = new fltk::MenuBar (0, 0, w, 30);
@@ -36,10 +37,15 @@ void ced::exitthis_cb(fltk::Widget* w, void* data)
 	tmp->hide ();
 }
 
-void ced::callback (fltk::Widget* w, void* data)
+void ced::window_cb (fltk::Widget* w, void* data)
 {
-	fltk::Window* tmp = w->window ();
-	pcontrol->delete_this (w); // tell control that this window is deleted*/
-	tmp->hide ();
+	if (fltk::ask("Do you really want to exit?"))
+	{
+		fltk::Window* tmp = w->window ();
+		pcontrol->delete_this (w);
+
+    	//((fltk::Window*)w)->hide();
+	}
+
 }
 

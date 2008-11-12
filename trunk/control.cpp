@@ -66,6 +66,6 @@ void control::new_cb (fltk::Widget* w, void* data)
 	cedwin->copy_label (buffer); // Important for own copy - else garbage displays
 	cedwin->setcontrol (tmp); // send a pointer from control to ced
 	cedwin->show ();
-	tmp->wc.push_back (cedwin); // wright it into the list
+	tmp->wc.push_back (cedwin); // write it into the list
 	tmp->redraw_list (); // redraw the list
 }
