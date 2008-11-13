@@ -34,8 +34,8 @@ void ced::setcontrol (fltk::Window* w)
 void ced::open_cb (fltk::Widget* w, void* data)
 {
 	ced* tmp = (ced*)w->window ();
-	char *newfile = fltk::file_chooser("Open File?", "*", tmp->filename);
-	if (newfile != NULL)
+	const char *newfile = fltk::file_chooser("Open File?", "*", tmp->filename);
+	/*if (newfile != NULL)
 		load_file(newfile, -1);*/
 }
 
