@@ -14,9 +14,7 @@ ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 		menubar = new fltk::MenuBar (0, 0, w, 30);
 
 		menubar->begin ();
-			//menubar->add("File/Exit This", 0, exitthis_cb, (void*)this);
-
-			menubar->add("File/Exit This", 0, exitthis_cb, (void*)this);
+			menubar->add("File/Exit", 0, exitthis_cb, (void*)this);
 		menubar->end (); // here ends the menu
 
 		ed = new fltk::TextEditor (0, 30, w, h); // the editor window

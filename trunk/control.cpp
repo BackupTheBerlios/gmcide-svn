@@ -51,6 +51,7 @@ void control::redraw_list ()
 void control::delete_this (fltk::Widget* w)
 {
 	wc.remove ((ced*)w);
+	delete (w);
 	redraw_list ();
 }
 
