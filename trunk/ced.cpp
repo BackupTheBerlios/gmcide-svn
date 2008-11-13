@@ -24,6 +24,8 @@ ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 	resizable (ed);
 	ed->linenumber_width (60);
 	ed->wrap_mode (true, 0);
+	textbuf = new fltk::TextBuffer(0);
+	ed->buffer (textbuf);
 }
 
 void ced::setcontrol (fltk::Window* w)
@@ -35,12 +37,17 @@ void ced::open_cb (fltk::Widget* w, void* data)
 {
 	ced* tmp = (ced*)w->window ();
 	const char *newfile = fltk::file_chooser("Open File?", "*", tmp->filename);
-	/*if (newfile != NULL)
-		load_file(newfile, -1);*/
+	if (newfile != NULL)
+		tmp->load_file(newfile, -1);
 }
 
 void ced::load_file(const char *newfile, int ipos)
 {
+	char buffer[30];
+	sprintf (buffer, "%s", newfile);
+	fltk::ask (buffer);
+	textbuf->loadfile(newfile);
+	//textbuf->insertfile(newfile, ipos);
 }
 
 void ced::exitthis_cb (fltk::Widget* w, void* data)
@@ -53,5 +60,5 @@ void ced::exitthis_cb (fltk::Widget* w, void* data)
 void ced::window_cb (fltk::Widget* w, void* data)
 {
 	pcontrol->delete_this ((fltk::Window*)w);
-    ((fltk::Window*)w)->hide();
+	((fltk::Window*)w)->hide();
 }
