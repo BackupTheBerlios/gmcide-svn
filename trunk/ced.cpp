@@ -26,6 +26,7 @@ ced::ced (int w, int h) : fltk::Window(fltk::USEDEFAULT, fltk::USEDEFAULT, w, h)
 	ed->wrap_mode (true, 0);
 	textbuf = new fltk::TextBuffer(0);
 	ed->buffer (textbuf);
+    ed->textfont(fltk::COURIER);
 }
 
 void ced::setcontrol (fltk::Window* w)
