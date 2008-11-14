@@ -35,7 +35,7 @@ void control::quit_cb (fltk::Widget*, void* data)
 void control::redraw_list ()
 {
 
-	char static buffer2[20];
+	char static buffer2[100];
 	int static ic;
 
 	browser->clear ();
